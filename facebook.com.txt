@@ -1,0 +1,81 @@
+;;
+;; Domain:     facebook.com.
+;; Exported:   2025-05-29 14:23:37
+;;
+;; This file is intended for use for informational and archival
+;; purposes ONLY and MUST be edited before use on a production
+;; DNS server.  In particular, you must:
+;;   -- update the SOA record with the correct authoritative name server
+;;   -- update the SOA record with the contact e-mail address information
+;;   -- update the NS record(s) with the authoritative name servers for this domain.
+;;
+;; For further information, please consult the BIND documentation
+;; located on the following website:
+;;
+;; http://www.isc.org/
+;;
+;; And RFC 1035:
+;;
+;; http://www.ietf.org/rfc/rfc1035.txt
+;;
+;; Please note that we do NOT offer technical support for any use
+;; of this zone data, the BIND name server, or any other third-party
+;; DNS software.
+;;
+;; Use at your own risk.
+;; SOA Record
+facebook.com	3600	IN	SOA	gannon.ns.cloudflare.com. dns.cloudflare.com. 2050019521 10000 2400 604800 3600
+
+;; NS Records
+facebook.com.	86400	IN	NS	gannon.ns.cloudflare.com.
+facebook.com.	86400	IN	NS	kristina.ns.cloudflare.com.
+
+;; A Records
+facebook.com.	1	IN	A	57.144.174.1 ; cf_tags=cf-proxied:true
+
+;; AAAA Records
+facebook.com.	1	IN	AAAA	2a03:2880:f357:1:face:b00c:0:25de ; cf_tags=cf-proxied:true
+
+;; CAA Records
+facebook.com.	1	IN	CAA	0 issue "digicert.com; account=271b0beda0771d006aa3a6c11b05187d456d6c239b46cb5241196095b09c92af"
+
+;; CNAME Records
+ai.facebook.com.	1	IN	CNAME	star.c10r.facebook.com. ; cf_tags=cf-proxied:true
+api.facebook.com.	1	IN	CNAME	star.c10r.facebook.com. ; cf_tags=cf-proxied:true
+beta.facebook.com.	1	IN	CNAME	latest.c10r.facebook.com. ; cf_tags=cf-proxied:true
+blog.facebook.com.	1	IN	CNAME	star.c10r.facebook.com. ; cf_tags=cf-proxied:true
+dev.facebook.com.	1	IN	CNAME	intern-regional.vvv.facebook.com. ; cf_tags=cf-proxied:true
+git.facebook.com.	1	IN	CNAME	git.vip.facebook.com. ; cf_tags=cf-proxied:true
+login.facebook.com.	1	IN	CNAME	star.c10r.facebook.com. ; cf_tags=cf-proxied:true
+m.facebook.com.	1	IN	CNAME	star-mini.c10r.facebook.com. ; cf_tags=cf-proxied:true
+mobile.facebook.com.	1	IN	CNAME	star.c10r.facebook.com. ; cf_tags=cf-proxied:true
+mta-sts.facebook.com.	1	IN	CNAME	star.facebook.com. ; cf_tags=cf-proxied:true
+my.facebook.com.	1	IN	CNAME	star.c10r.facebook.com. ; cf_tags=cf-proxied:true
+new.facebook.com.	1	IN	CNAME	star.c10r.facebook.com. ; cf_tags=cf-proxied:true
+pay.facebook.com.	1	IN	CNAME	www.facebook.com. ; cf_tags=cf-proxied:true
+portal.facebook.com.	1	IN	CNAME	star.c10r.facebook.com. ; cf_tags=cf-proxied:true
+shop.facebook.com.	1	IN	CNAME	star.c10r.facebook.com. ; cf_tags=cf-proxied:true
+static.facebook.com.	1	IN	CNAME	star.c10r.facebook.com. ; cf_tags=cf-proxied:true
+store.facebook.com.	1	IN	CNAME	star.c10r.facebook.com. ; cf_tags=cf-proxied:true
+web.facebook.com.	1	IN	CNAME	star.c10r.facebook.com. ; cf_tags=cf-proxied:true
+www.facebook.com.	1	IN	CNAME	star-mini.c10r.facebook.com. ; cf_tags=cf-proxied:true
+
+;; MX Records
+facebook.com.	1	IN	MX	10 smtpin.vvv.facebook.com.
+
+;; NS Records
+facebook.com.	1	IN	NS	a.ns.facebook.com.
+facebook.com.	1	IN	NS	c.ns.facebook.com.
+facebook.com.	1	IN	NS	d.ns.facebook.com.
+facebook.com.	1	IN	NS	b.ns.facebook.com.
+
+;; TXT Records
+default._domainkey.facebook.com.	1	IN	TXT	"t=y; k=rsa; p=;"
+_dmarc.facebook.com.	1	IN	TXT	"v=DMARC1; p=reject; rua=mailto:a@dmarc.facebookmail.com; ruf=mailto:fb-dmarc@datafeeds.phishlabs.com; pct=100"
+facebook.com.	1	IN	TXT	"google-site-verification=A2WZWCNQHrGV_TWwKh6KHY90tY0SHZo_RnyMJoDaG0s"
+facebook.com.	1	IN	TXT	"zoom-domain-verification=4b2ef4e1-6dee-4483-9869-9bef353fd147"
+facebook.com.	1	IN	TXT	"v=spf1 redirect=_spf.facebook.com"
+facebook.com.	1	IN	TXT	"google-site-verification=sK6uY9x7eaMoEMfn3OILqwTFYgaNp4llmguKI-C3_iA"
+facebook.com.	1	IN	TXT	"google-site-verification=wdH5DTJTc9AYNwVunSVFeK0hYDGUIEOGb-RReU6pJlY"
+_mta-sts.facebook.com.	1	IN	TXT	"v=STSv1; id=20191202T113700;"
+_smtp._tls.facebook.com.	1	IN	TXT	"v=TLSRPTv1;rua=mailto:sts-reports@facebookmail.com"

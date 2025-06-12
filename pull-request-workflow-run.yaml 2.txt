@@ -1,0 +1,56 @@
+name: Comment on the pull request
+
+# read-write repo token
+# access to secrets
+on:
+  workflow_run:
+    workflows: ["Pull Request"]
+    types:
+      - completed
+
+env:
+  PR_DIR: "_pr"
+  PR_ZIP: "_pr.zip"
+
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    if: >
+      github.event.workflow_run.event == 'pull_request' &&
+      github.event.workflow_run.conclusion == 'success'
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20.x"
+          cache: "npm"
+      - run: node secrets.js
+      - run: echo '### Hello world from workflow_run! 🚀' >> $GITHUB_STEP_SUMMARY
+      - name: 'Download artifact'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            var artifacts = await github.rest.actions.listWorkflowRunArtifacts({
+               owner: context.repo.owner,
+               repo: context.repo.repo,
+               run_id: ${{github.event.workflow_run.id }},
+            });
+            var matchArtifact = artifacts.data.artifacts.filter((artifact) => {
+              return artifact.name == "pr"
+            })[0];
+            var download = await github.rest.actions.downloadArtifact({
+               owner: context.repo.owner,
+               repo: context.repo.repo,
+               artifact_id: matchArtifact.id,
+               archive_format: 'zip',
+            });
+            var fs = require('fs');
+            var path = require('path');
+            fs.writeFileSync(path.join('${{github.workspace}}', process.env.PR_ZIP), Buffer.from(download.data));
+      - run: mkdir $PR_DIR && unzip $PR_ZIP -d $PR_DIR && cat $PR_DIR/env >> $GITHUB_ENV
+      - run: node secrets.js
+
+      - run: node number.js
+
+      - run: echo "hmm?"
